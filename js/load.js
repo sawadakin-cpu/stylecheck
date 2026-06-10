@@ -2,7 +2,7 @@
 // 毎週更新
 
 $(function () {
-  const DATA_URL = "https://sawadakin-pu.github.io/stylecheck/data.json";
+  const DATA_URL = "https://sawadakin-cpu.github.io/stylecheck/data.json";
 
   // URLパラメータ（プレビュー用：?page=20260608）
   const params = new URLSearchParams(location.search);
