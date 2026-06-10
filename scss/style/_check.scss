@@ -1,0 +1,115 @@
+@use "common";
+
+.check {
+  padding: 0 2.4vw;
+  background-color: #E2D9D9;
+  @include common.pc {
+    padding: 0 9px;
+  }
+
+  &__inner {
+    padding: calc(85 / 375 * 100vw) 0 20vw;
+    border: 1px solid #879DB5;
+    border-top: none;
+    border-bottom: none;
+    @include common.pc {
+      padding: 80px 0 128px;
+    }
+  }
+
+  &__title {
+    width: calc(220 / 375 * 100vw);
+    margin-inline: auto;
+    @include common.pc {
+      width: 220px;
+    }
+  }
+
+  &__list {
+    width: calc(287 / 375 * 100vw);
+    margin: 8vw auto 0;
+    display: flex;
+    justify-content: space-between;
+    @include common.pc {
+      width: 390px;
+      margin-top: 30px;
+    }
+
+    li {
+      width: 35.2vw;
+      aspect-ratio: 1/1;
+      @include common.pc {
+        width: 180px;
+      }
+
+      a {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 3.2vw;
+        text-align: center;
+        line-height: 1.5;
+        background-color: #fff;
+        border: 1px solid #707070;
+        border-radius:10px;
+        @include common.pc {
+          font-size: 16px;
+        }
+
+        &:active {
+          opacity: .6;
+        }
+
+        &:hover {
+          @include common.pc {
+            opacity: .6;
+          }
+        }
+      }
+    }
+  }
+
+  &__image {
+    width: calc(70 / 375 * 100vw);
+    margin-top: 1.6vw;
+    @include common.pc {
+      width: 96px;
+      margin-top: 6px;
+    }
+  }
+
+  &__back {
+    width: calc(290.5 / 375 * 100vw);
+    height: calc(50 / 375 * 100vw);
+    margin: calc(40 / 375 * 100vw) auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: calc(14 / 375 * 100vw);
+    background-color: #463C3C;
+    border: 1px solid #463C3C;
+    border-radius: 9999px;
+    @include common.pc {
+      width: 420px;
+      height: 60px;
+      margin-top: 64px;
+      font-size: 16px;
+    }
+
+    &:active {
+      color: #463C3C;
+      background-color: transparent;
+    }
+
+    &:hover {
+      @include common.pc {
+        color: #463C3C;
+        background-color: transparent;
+      }
+    }
+  }
+}

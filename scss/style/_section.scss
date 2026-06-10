@@ -1,0 +1,186 @@
+@use "common";
+
+.section {
+  width: calc(310 / 375 * 100vw);
+  margin-inline: auto;
+  padding: calc(80 / 375 * 100vw) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  @include common.pc {
+    max-width: 912px;
+    padding: 80px 0;
+  }
+
+  &+& {
+    border-top: 1px solid #C1BEBE;
+  }
+
+  &__title {
+    font-size: calc(11 / 375 * 100vw);
+    @include common.pc {
+      font-size: 13px;
+    }
+
+    span {
+      font-size: 8vw;
+      @include common.tsuku;
+      @include common.pc {
+        font-size: 35px;
+      }
+    }
+  }
+
+  &__theme {
+    margin-top: calc(50 / 375 * 100vw);
+    font-size: calc(17 / 375 * 100vw);
+    line-height: 2.17;
+    @include common.tsuku;
+    @include common.pc {
+      margin-top: 50px;
+      font-size: 20px;
+    }
+  }
+
+  &__desc {
+    font-size: calc(13 / 375 * 100vw);
+    line-height: 2;
+    @include common.pc {
+      font-size: 14px;
+    }
+  }
+
+  &__list {
+    margin-top: calc(50 / 375 * 100vw);
+    @include common.pc {
+      margin-top: 50px;
+    }
+  }
+}
+
+.keyword {
+  .section__desc {
+    margin-top: calc(50 / 375 * 100vw);
+    @include common.pc {
+      margin-top: 50px;
+    }
+  }
+}
+
+.item {
+  .section__list {
+    text-align: left;
+    @include common.pc {
+      width: 410px;
+    }
+
+    li {
+      display: flex;
+      gap: calc(10 / 375 * 100vw);
+      font-size: calc(11 / 375 * 100vw);
+      @include common.pc {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      &+li {
+        margin-top: 4vw;
+        @include common.pc {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+
+  .section__name {
+    width: calc(80 / 375 * 100vw);
+    position: relative;
+    @include common.pc {
+      width: 30%;
+    }
+
+    &::after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: #707070;
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      z-index: 1;
+    }
+
+    span {
+      padding-right: 2px;
+      font-size: calc(13 / 375 * 100vw);
+      background-color: #EDEEEF;
+      position: absolute;
+      left: 0;
+      z-index: 2;
+      @include common.pc {
+        padding-right: 4px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.material {
+  .section__desc {
+    margin-top: calc(25 / 375 * 100vw);
+    @include common.pc {
+      margin-top: 50px;
+    }
+  }
+
+  .section__list {
+    width: calc(260 / 375 * 100vw);
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: calc(25 / 375 * 100vw);
+    @include common.pc {
+      width: 375px;
+      row-gap: 25px;
+    }
+
+    li {
+      width: calc(100% / 3);
+      text-align: left;
+    }
+  }
+}
+
+.pattern {
+  .section__desc {
+    margin-top: calc(50 / 375 * 100vw);
+    @include common.pc {
+      margin-top: 50px;
+    }
+  }
+
+  .section__list {
+    width: 74.4vw;
+    display: flex;
+    justify-content: space-between;
+    @include common.pc {
+      width: 500px;
+    }
+
+    li {
+      width: 30.5%;
+      @include common.pc {
+        width: 140px;
+      }
+
+      p {
+        margin-top: calc(10 / 375 * 100vw);
+        font-size: calc(11 / 375 * 100vw);
+        @include common.pc {
+          margin-top: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

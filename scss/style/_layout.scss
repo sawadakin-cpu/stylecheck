@@ -1,0 +1,109 @@
+@use "common";
+
+.wrapper,
+.detail {
+  margin-top: 40px;
+  @include common.pc {
+    margin-top: 50px;
+  }
+}
+
+.detail {
+  padding: 2.4vw 2.4vw 0;
+  background-color: #EDEEEF;
+  @include common.pc {
+    padding: 9px 9px 0;
+  }
+
+  &__inner {
+    border: 1px solid #879DB5;
+    border-bottom: none;
+  }
+}
+
+// 固定リンク
+.fixed {
+  width: 100%;
+  height: min(12svh, 84px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E2D9D9;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  @include common.pc {
+    height: min(16svh, 128px);
+  }
+
+  &__inner {
+    width: 92vw;
+    @include common.pc {
+      width: 420px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      width: calc(162.5 / 375 * 100vw);
+      height: calc(40 / 375 * 100vw);
+      @include common.pc {
+        width: 200px;
+        height: 40px;
+      }
+
+      a {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: calc(11 / 375 * 100vw);
+        border: 1px solid #000;
+        border-radius: 12px;
+        @include common.pc {
+          font-size: 13px;
+        }
+
+        &.straight {background-color: common.$nt-bg;}
+        &.wave {background-color: common.$wv-bg;}
+        &.natural {background-color: common.$nt-bg;}
+
+        &:active {
+          opacity: .6;
+        }
+
+        &:hover {
+          @include common.pc {
+            opacity: .6;
+          }
+        }
+      }
+    }
+  }
+
+  &__back {
+    &:active {
+      opacity: .6;
+    }
+
+    &:hover {
+      @include common.pc {
+        opacity: .6;
+      }
+    }
+
+    @include common.pc {
+      margin: 10px 5px 0 auto;
+      display: block;
+      font-size: 12px;
+      text-align: right;
+      text-decoration: underline;
+    }
+  }
+}

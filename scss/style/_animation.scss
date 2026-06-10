@@ -1,0 +1,96 @@
+// animation
+
+.animated {
+  opacity: 0;
+  animation-duration: .6s;
+  -webkit-animation-duration: .6s;
+  animation-fill-mode: both;
+  -webkit-animation-fill-mode: both;
+}
+
+// delay
+.delay-03s {
+  animation-delay: .3s;
+  -webkit-animation-delay: .3s;
+}
+.delay-06s {
+  animation-delay: .6s;
+  -webkit-animation-delay: .6s;
+}
+.delay-09s {
+  animation-delay: .9s;
+  -webkit-animation-delay: .9s;
+}
+
+// fade in
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  -webkit-animation-name: fadeIn;
+}
+
+// fade up
+@keyframes fadeUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeUp {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeUp {
+  animation-name: fadeUp;
+  -webkit-animation-name: fadeUp;
+}
+
+// fade to rigth
+.fadeToRight {
+  color: transparent;
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  --duration: 2.0s;
+  --ease: ease-out
+}
+
+.fadeToRight.is-active {
+  background-image: linear-gradient(to right, #000 30%, rgba(255, 255, 255, 0) 60%);
+  background-position: left 100% center;
+  animation: toRight var(--duration, .4s) var(--ease) forwards;
+  -webkit-animation: toRight var(--duration, .4s) var(--ease) forwards;
+}
+
+@keyframes toRight {
+  100% {
+    background-position: left 0% center;
+  }
+}

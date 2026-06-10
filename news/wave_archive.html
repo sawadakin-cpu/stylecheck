@@ -1,0 +1,378 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flexslider@2.7.2/jquery.flexslider.min.js"></script>
+
+<!-- adobe fonts -->
+<script>
+    (function(d) {
+        var config = {
+        kitId: 'dsz0rdo',
+        scriptTimeout: 3000,
+        async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+</script>
+
+<!-- スプレ -->
+<script>
+    jQuery(function () {
+        jQuery.ajax({
+            type: 'GET',
+            url: 'https://script.google.com/macros/s/AKfycbwiiuSBQ2VaAw_tR0Im1GucOTNSYeQDQ3t5nrS6H95jwXFmGzbB1vbHP-7CfCr_XVhm/exec', // ← ここにJSONのURLを入力
+            dataType: 'json',
+            async: false,
+        }).then(function (json) {
+            console.dir(json);
+
+            function formatLocalDate(utcString) {
+                const date = new Date(utcString);
+                const year = date.getFullYear();
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const day = date.getDate().toString().padStart(2, '0');
+                return `${year}/${month}/${day}`;
+            }
+
+            var cell = json.filter(({ type }) => type == 'wave').reverse();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const acdValue = urlParams.get("acd");
+            let urlDateStr = null;
+
+            if (acdValue) {
+                const dateMatch = acdValue.match(/^(\d{6})/);
+                if (dateMatch) {
+                    const yyMMdd = dateMatch[1];
+                    const year = parseInt(yyMMdd.substr(0, 2), 10) + 2000;
+                    const month = yyMMdd.substr(2, 2);
+                    const day = yyMMdd.substr(4, 2);
+                    urlDateStr = `${year}/${month}/${day}`;
+                }
+            }
+
+            const now = new Date();
+
+            for (let i = 0; i < cell.length; i++) {
+                const item = cell[i];
+                if (item && item.date) {
+                    if (!item.URL || item.URL.trim() === "") continue;
+
+                    const dateStr = formatLocalDate(item.date);
+
+                    if (urlDateStr && dateStr === urlDateStr) continue;
+
+                    const itemDate = new Date(item.date);
+                    itemDate.setHours(12, 0, 0, 0); // 昼12時固定
+                    if (itemDate > now) continue;
+
+                    const publishDateTime = `${item.date} 12:00:00`;
+
+                    jQuery('ul.archive_slides').append(
+                        '<li class="timer" data-start-date="' + publishDateTime + '">' +
+                        '<a href="' + item.URL + '">' +
+                        '<img src="' + item.banner + '" alt="">' +
+                        '<p class="date">' + dateStr + '</p>' +
+                        '<p class="title">' + item.title + '</p>' +
+                        '</a></li>'
+                    );
+                }
+            }
+
+            // ✅ 最大6件まで表示（start-dateの新しい順）
+            const timerItems = jQuery('ul.archive_slides li.timer');
+            const sortedTimers = timerItems.toArray().sort((a, b) => {
+                const dateA = new Date(jQuery(a).attr('data-start-date'));
+                const dateB = new Date(jQuery(b).attr('data-start-date'));
+                return dateB - dateA; // 新しい順
+            });
+
+            sortedTimers.forEach((el, index) => {
+                if (index < 6) {
+                    jQuery(el).show();
+                } else {
+                    jQuery(el).hide(); // または .remove()
+                }
+            });
+
+            // --- flexslider ---
+            function getItemWidth() {
+                const containerWidth = jQuery('.flexslider').width();
+                return Math.floor((containerWidth - 20) / 2); // 2枚表示
+            }
+
+            function positionNavButtons() {
+                const $slider = jQuery('.flexslider');
+                const $image = $slider.find('.slides li img').first();
+                const $prev = $slider.find('.flex-prev');
+                const $next = $slider.find('.flex-next');
+
+                if ($image.length && $prev.length && $image[0].complete) {
+                    const imgHeight = $image.height();
+                    const btnHeight = $prev.height();
+                    const topPos = (imgHeight - btnHeight) / 2;
+
+                    $prev.css('top', topPos + 'px');
+                    $next.css('top', topPos + 'px');
+                }
+            }
+
+            jQuery('.flexslider').flexslider({
+                animation: "slide",
+                slideshowSpeed: 3000,
+                controlNav: true,
+                directionNav: true,
+                animationLoop: false,
+                slideshow: false,
+                itemWidth: getItemWidth(),
+                itemMargin: 10,
+                minItems: 2,
+                maxItems: 2,
+                start: function () {
+                    positionNavButtons();
+                }
+            });
+
+            jQuery(window).on('resize', function () {
+                const flex = jQuery('.flexslider').data('flexslider');
+                if (flex) {
+                    flex.vars.itemWidth = getItemWidth();
+                    flex.doMath();
+                    flex.update();
+                }
+                positionNavButtons();
+            });
+
+            jQuery(window).on('load', positionNavButtons);
+        });
+    });
+</script>
+
+
+<script>
+    
+</script>
+
+<div id="stylecheck_news">
+
+    <!-- archive -->
+    <div id="archive" class="archive timer">
+        <p class="a_title">ARCHIVE</p>
+        <div class="flexslider slider">
+            <ul class="slides archive_slides list">
+                <!-- <li><img src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg" alt="">
+                    <p class="date">2025.5.5</p>
+                    <p class="title">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </li>
+                <li><img src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg" alt="">
+                    <p class="date">2025.5.5</p>
+                    <p class="title">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </li>
+                <li><img src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg" alt="">
+                    <p class="date">2025.5.5</p>
+                    <p class="title">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+
+    
+</div>
+
+<!-- ※※※以下は触らない※※※ -->
+<style>
+
+/******************************  
+archive
+********************************/
+    #stylecheck_news .archive {
+        /* width: 96%; */
+        margin: 0 auto 100px;
+        font-family: dnp-shuei-gothic-gin-std, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+    }
+    @media screen and (min-width: 970px) {
+        #stylecheck_news .archive {
+            width: 100%;
+        }
+    }
+    #stylecheck_news .archive .a_title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        border-bottom: 1px solid #000;
+    }
+
+    @media screen and (min-width: 970px) {
+        #stylecheck_news .archive .a_title {
+            font-size: 20px;
+            padding-bottom: 10px;
+        }
+    }
+
+    #stylecheck_news .archive .slides .timer a { /* 追加 */
+        text-decoration: none;
+    }
+
+    #stylecheck_news .archive .slides .date {
+        padding-bottom: 5px;
+    }
+
+    #stylecheck_news .archive .slides .date,
+    #stylecheck_news .archive .slides .title {
+        font-size: 12px;
+        width: 100%;
+        line-height: 1.5;
+    }
+
+    #stylecheck_news .archive .flexslider .slides li {
+        box-sizing: border-box;
+    }
+
+    #stylecheck_news .archive ul li {
+        list-style: none;
+    }
+
+    #stylecheck_news .archive ul li  img {
+        margin-top: 20px;
+        margin-bottom: 14px;
+    }
+
+    #stylecheck_news .archive ul::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    /* スクロールの背景の設定 */
+    #stylecheck_news .archive ul::-webkit-scrollbar-track {
+        border-radius: 5px;
+        box-shadow: 0 0 4px #aaa inset;
+        padding-left: 10px;
+    }
+    /* スクロールのつまみ部分の設定 */
+    #stylecheck_news .archive ul::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #717171;
+    }
+    @media screen and (min-width: 970px) {
+        #stylecheck_news {
+            width: 100%;
+        }
+        #stylecheck_new .top {
+            margin-bottom: 50px;
+        }
+    }
+/******************************  
+flexsliderの ＜＞directionNav  と。。。controlNav
+********************************/
+#stylecheck_news .flex-control-nav {
+    bottom: -40px!important;
+}
+
+#stylecheck_news .flex-control-nav li {
+    width: 6px;
+    margin: 0 14px;
+}
+@media screen and (min-width: 769px) {
+    #stylecheck_news .flex-control-nav li {
+    margin: 0 13px;
+    }
+}
+
+#stylecheck_news .flex-control-paging li a {
+    width: 6px;
+    height: 6px;
+    border: 0.5px solid rgb(20, 36, 71);
+    background: rgb(20, 36, 71);
+    background: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+}
+@media screen and (min-width: 769px) {
+    #stylecheck_news .flex-control-paging li a {
+        width: 8px !important;
+        height: 8px !important;
+    }
+}
+
+#stylecheck_news .flex-control-paging li a.flex-active {
+    background: rgba(20, 36, 71, 0.9);
+}
+
+#stylecheck_news .flex-direction-nav a {
+    display: none;
+}
+@media screen and (min-width: 769px) {
+    #stylecheck_news .flex-direction-nav a {
+        display: block;
+        width: 20px;
+        height: 30px;
+        opacity: 1;
+        top: 60%;
+    }
+}
+
+#stylecheck_news .flex-direction-nav a:before {
+    display: none;
+    }
+@media screen and (min-width: 769px) {
+    #stylecheck_news .flex-direction-nav a.flex-prev:before {
+        display: block;
+        content: "";
+        background-image: url(https://www.palcloset.jp/shared/pc_pal/event/news/images/prev.png) !important;
+        width: 12px;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    #stylecheck_news .flex-direction-nav a.flex-next:before {
+        display: block;
+        content: "";
+        background-image: url(https://www.palcloset.jp/shared/pc_pal/event/news/images/next.png) !important;
+        width: 12px;
+        height: 30px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+    @media screen and (min-width: 769px) {
+        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-prev {
+        opacity: 1;
+        left: -40px;
+    }
+        #stylecheck_news .flex-direction-nav .flex-prev {
+        left: -40px;
+        top: 50%!important;
+    }
+        #stylecheck_news .flex-direction-nav .flex-next {
+        right: -50px;
+        text-align: right;
+        top: 50%!important;
+    }
+        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-prev {
+        opacity: 1;
+        left: -40px;
+    }
+        #stylecheck_news.flexslider:hover .flex-direction-nav .flex-prev:hover {
+        opacity: 0.7;
+    }
+        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-next {
+        opacity: 1;
+        right: -50px;
+    }
+        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-next:hover {
+        opacity: 0.7;
+    }
+        #stylecheck_news .flex-direction-nav a {
+        position: absolute;
+        width: 20px;
+        height: 30px;
+        opacity: 1;
+        /* top は JS で上書きされるのでここでは指定不要 */
+    }
+}
+</style>
+
+

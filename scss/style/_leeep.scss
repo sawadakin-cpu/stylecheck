@@ -1,0 +1,26 @@
+@use "common";
+
+.leeep {
+  padding: calc(100 / 375 * 100vw) 0 calc(80 / 375 * 100vw);
+  text-align: center;
+  background-color: #F7F7FA;
+  @include common.pc {
+    padding: 100px 0;
+  }
+
+  &__title {
+    font-size: calc(18 / 375 * 100vw);
+    @include common.pc {
+      font-size: 18px;
+    }
+  }
+
+  &__movie {
+    margin: 8vw auto 0;
+
+    @include common.pc {
+      max-width: 800px;
+      margin-top: 30px;
+    }
+  }
+}

@@ -1,0 +1,136 @@
+@use "common";
+
+.top {
+  padding: 16vw 0 calc(100 / 375 * 100vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  @include common.pc {
+    padding: 40px 0 90px;
+  }
+
+  &__heading {
+    width: 41.6vw;
+    @include common.pc {
+      width: 202px;
+    }
+
+    span {
+      display: block;
+      text-align: center;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      font-size: 2.9vw; //11px
+      margin-top: -0.5vw;
+      margin-left: -1.2vw;
+
+      @include common.pc {
+        font-size: 13px;
+        margin-top: -5px;
+        margin-left: -10px;
+      }
+    }
+  }
+
+  &__style,
+  &__feature {
+    font-size: calc(17 / 375 * 100vw);
+    @include common.tsuku;
+    @include common.pc {
+      font-size: 20px;
+    }
+  }
+
+  &__style {
+    margin-top: calc(35 / 375 * 100vw);
+    line-height: 1.65;
+    @include common.pc {
+      margin-top: 30px;
+    }
+  }
+
+  &__feature {
+    margin-top: 8vw;
+    line-height: 2.17;
+    @include common.pc {
+      margin-top: 65px;
+    }
+  }
+
+  &__point {
+    width: 100%;
+    aspect-ratio: 1 / calc(388 / 355);
+    margin-top: calc(25 / 375 * 100vw);
+    position: relative;
+    @include common.pc {
+      width: 630px;
+      height: 471px;
+      margin-top: 40px;
+    }
+
+    &Image {
+      width: 32vw;
+      position: absolute;
+      @include common.pc {
+        width: 174px;
+      }
+
+      &:nth-child(1) {
+        top: calc(18 / 388 * 100%);
+        left: calc(9 / 355 * 100%);
+      }
+
+      &:nth-child(2) {
+        left: calc(9 / 355 * 100%);
+      }
+
+      &:nth-child(3) {
+        top: calc(230 / 388 * 100%);
+        right: calc(9 / 355 * 100%);
+      }
+    }
+
+    &Whole {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__desc {
+    margin-top: calc(40 / 375 * 100vw);
+    font-size: calc(13 / 375 * 100vw);
+    line-height: 1.7;
+    @include common.pc {
+      margin-top: 60px;
+      font-size: 14px;
+    }
+  }
+}
+
+.straight {
+  .top__pointImage {
+    &:nth-child(2) {
+      top: calc(148 / 388 * 100%);
+    }
+  }
+}
+
+.wave {
+  .top__pointImage {
+    &:nth-child(2) {
+      top: calc(188 / 388 * 100%);
+    }
+  }
+}
+
+.natural {
+  .top__pointImage {
+    &:nth-child(2) {
+      top: calc(168 / 388 * 100%);
+    }
+  }
+}

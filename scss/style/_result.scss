@@ -1,0 +1,718 @@
+@use "common";
+
+.result {
+  position: relative;
+
+  // menu
+  &__menu {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 2px solid #e2e0e0;
+    position: sticky;
+    top: 40px;
+    z-index: 5;
+    @include common.pc {
+      top: 50px;
+    }
+
+    &List {
+      width: 90%;
+      margin-inline: auto;
+      display: flex;
+      @include common.pc {
+        width: 666px;
+      }
+
+      li {
+        width: calc(100% / 3);
+        position: relative;
+
+        &.is-active {
+          &::after {
+            content: "";
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            bottom: -2px;
+          }
+        }
+
+        &:nth-child(1) {
+          color: common.$st-pale;
+          &::after {
+            background-color: common.$st-pale;
+          }
+        }
+
+        &:nth-child(2) {
+          color: common.$wv-pale;
+          &::after {
+            background-color: common.$wv-pale;
+          }
+        }
+
+        &:nth-child(3) {
+          color: common.$nt-pale;
+          &::after {
+            background-color: common.$nt-pale;
+          }
+        }
+
+        a {
+          padding: calc(10 / 375 * 100vw);
+          display: block;
+          font-size: calc(13 / 375 * 100vw);
+          text-align: center;
+          @include common.pc {
+            padding: 20px 10px 10px 10px;
+            font-size: 13px;
+          }
+        }
+
+        span {
+          font-size: calc(20 / 375 * 100vw);
+          @include common.tsuku;
+          @include common.pc {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  // inner
+  &__inner {
+    padding-top: calc(100 / 375 * 100vw);
+    @include common.pc {
+      padding-top: 150px;
+    }
+
+    &.straight {
+      background-color: common.$st-bg;
+    }
+    &.wave {
+      background-color: common.$wv-bg;
+    }
+    &.natural {
+      background-color: common.$nt-bg;
+    }
+  }
+
+  &__heading {
+    width: fit-content;
+    max-width: 95%;
+    margin-inline: auto;
+  }
+
+  &__date {
+    width: 29.2vw;
+    height: calc(25 / 375 * 100vw);
+    margin-left: 3vw;
+    margin-bottom: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: calc(14 / 375 * 100vw);
+    font-weight: 600;
+    background-color: common.$orange;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    @include common.pc {
+      width: 125px;
+      height: 25px;
+      margin-bottom: 20px;
+      margin-left: -50px;
+      font-size: 16px;
+    }
+
+    &::after {
+      content: "";
+      width: 0;
+      height: 0;
+      margin-bottom: -10px;
+      border: 20px solid transparent;
+      border-top-color: #fc5827;
+      border-right: 0;
+      border-bottom: 0;
+      margin-left: -5px;
+      position: absolute;
+      bottom: 0;
+      left: 53%;
+      z-index: -1;
+    }
+  }
+
+  &__item {
+    margin-inline: auto;
+    padding-bottom: calc(65 / 375 * 100vw);
+    @include common.pc {
+      width: 90%;
+      max-width: 1020px;
+      padding-bottom: 100px;
+    }
+
+    &Title {
+      display: flex;
+      flex-direction: column;
+      gap: calc(10 / 375 * 100vw);
+      font-size: 4.8vw;
+      @include common.tsuku;
+      text-align: center;
+      @include common.pc {
+        gap: 10px;
+        font-size: 24px;
+      }
+
+      &--or {
+        color: common.$orange;
+      }
+    }
+
+    &List {
+      margin-top: 12vw;
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: calc(25 / 375 * 100vw);
+      @include common.pc {
+        margin-top: 70px;
+        justify-content: flex-start;
+        row-gap: 35px;
+      }
+
+      > div,
+      li {
+        width: calc(100% / 3);
+        font-size: calc(12 / 375 * 100vw);
+        @include common.pc {
+          width: calc(100% / 4);
+          font-size: 15px;
+        }
+
+        a {
+          &:active {
+            opacity: 0.6;
+          }
+
+          &:hover {
+            @include common.pc {
+              opacity: 0.6;
+            }
+          }
+        }
+
+        p {
+          &:not(:first-child) {
+            padding: 0 calc(10 / 375 * 100vw);
+            @include common.pc {
+              padding: 0 10px;
+            }
+          }
+
+          &:nth-child(3) {
+            margin-top: calc(10 / 375 * 100vw);
+            @include common.pc {
+              margin-top: 15px;
+            }
+          }
+
+          span {
+            display: none;
+          }
+        }
+
+        .textOverflow {
+          @include common.pc {
+            padding: 0 10px;
+          }
+        }
+
+        .price {
+          span {
+            display: inline-block;
+          }
+        }
+
+        .salecolor,
+        .text-red,
+        .tt02 {
+          color: common.$orange;
+        }
+      }
+    }
+  }
+
+  &__snap {
+    padding: calc(60 / 375 * 100vw) 0 calc(100 / 375 * 100vw);
+    background-color: rgba($color: #fff, $alpha: 0.5);
+    @include common.pc {
+      width: 100%;
+      padding: 100px 0 150px;
+    }
+
+    &Title {
+      font-size: calc(20 / 375 * 100vw);
+      @include common.tsuku;
+      text-align: center;
+      @include common.pc {
+        font-size: 24px;
+      }
+    }
+
+    &List {
+      // width: calc(350 / 375 * 100vw);
+      width: 100%;
+      margin: 12vw auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: calc(25 / 375 * 100vw);
+      @include common.pc {
+        max-width: 1020px;
+        margin-top: 70px;
+        row-gap: 35px;
+      }
+
+      li {
+        width: calc(100% / 3);
+        font-size: calc(12 / 375 * 100vw);
+        @include common.pc {
+          width: calc(100% / 6);
+          font-size: 15px;
+        }
+
+        a {
+          &:active {
+            opacity: 0.6;
+          }
+
+          &:hover {
+            @include common.pc {
+              opacity: 0.6;
+            }
+          }
+        }
+
+        .img {
+          aspect-ratio: 1/1.333;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .brand {
+          margin-top: calc(10 / 375 * 100vw);
+          padding: 0 calc(5 / 375 * 100vw);
+          overflow-wrap: break-word;
+          @include common.pc {
+            margin-top: 15px;
+            padding: 0 8px;
+          }
+        }
+
+        .tall {
+          margin-top: calc(4 / 375 * 100vw);
+          padding: 0 calc(5 / 375 * 100vw);
+          @include common.pc {
+            margin-top: 4px;
+            padding: 0 8px;
+          }
+        }
+      }
+    }
+
+    .result__button {
+      font-size: calc(12 / 375 * 100vw) !important;
+      @include common.pc {
+        font-size: 16px !important;
+        margin-top: 54px;
+      }
+    }
+  }
+
+  &__buttonBox {
+    // margin-top: calc(50 / 375 * 100vw);
+    margin-top: calc(40 / 375 * 100vw); //変更
+    text-align: right;
+    @include common.pc {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 306px 306px 306px;
+      grid-template-rows: 23px 1fr;
+      column-gap: 10px;
+      row-gap: 57px;
+      place-items: center;
+      place-content: center;
+    }
+  }
+
+  &__button {
+    // width: calc(320 / 375 * 100vw);
+    // height: 13.6vw;
+    margin-inline: auto;
+    // display: flex;
+    display: block; //変更
+    align-items: center;
+    justify-content: center;
+    // font-size: calc(14 / 375 * 100vw);
+    // border-radius: 9999px;
+    // @include common.pc {
+    //   width: 410px;
+    //   height: 50px;
+    //   font-size: 16px;
+    // }
+
+    & + & {
+      // margin-top: 8vw;//変更
+      margin-top: calc(11 / 375 * 100%);
+      @include common.pc {
+        margin-top: 30px;
+      }
+    }
+
+    &:last-child {
+      grid-column: 3 / 4;
+    }
+  }
+
+  &__itemMore {
+    color: #000;
+    // background-color: #575454;
+    // border: 1px solid #575454;
+    border-bottom: solid 1px #000;
+    text-align: right;
+    font-size: calc(12 / 375 * 100vw);
+    display: inline-block;
+    margin-left: auto;
+    margin-right: calc(20 / 375 * 100vw);
+    margin-bottom: calc(90 / 375 * 100vw);
+
+    @include common.pc {
+      font-size: 16px;
+      grid-column: 3 / 4;
+      grid-row: 1 /2;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+
+    &:active {
+      // color: #575454;
+      color: #575454;
+      // background-color: transparent;
+      border-bottom: solid 1px #575454;
+    }
+
+    &:hover {
+      @include common.pc {
+        color: #575454;
+        // background-color: transparent;
+        border-bottom: solid 1px #575454;
+      }
+    }
+  }
+
+  &__recommendType {
+    // color: #575454;
+    // background-color: transparent;
+    // border: 1px solid #575454;
+    width: calc(331 / 375 * 100vw); //変更
+    @include common.pc {
+      grid-row: 2 /3;
+      grid-column: 2 / 3;
+      width: 306px;
+      justify-content: center;
+      margin-left: 0;
+    }
+
+    // &:active {
+    //   color: #fff;
+    //   background-color: #575454;
+    // }
+
+    // &:hover {
+    //   @include common.pc {
+    //     color: #fff;
+    //     background-color: #575454;
+    //   }
+    // }
+
+    &.cookie-straight {
+      @include common.pc {
+        grid-column: 1 / 2;
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+
+    &.cookie-wave {
+      @include common.pc {
+        grid-column: 1 / 2;
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+
+    &.cookie-natural {
+      @include common.pc {
+        grid-column: 1 / 2;
+        margin-right: 0;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__snap {
+    .result__buttonBox {
+      @include common.pc {
+        max-width: 1020px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.detail {
+  .result {
+    padding-top: 20vw;
+    background-color: #f0f4f5;
+    @include common.pc {
+      padding-top: 60px;
+    }
+
+    &__inner {
+      margin-top: calc(10 / 375 * 100vw);
+      padding: 0;
+      @include common.pc {
+        margin-top: 10px;
+      }
+    }
+
+    &__title {
+      display: inline-block;
+      color: common.$orange;
+      font-size: calc(16 / 375 * 100vw);
+      text-align: center;
+      letter-spacing: 2px;
+      @include common.pc {
+        font-size: 20px;
+      }
+    }
+
+    &__point {
+    }
+
+    &__item {
+      padding-bottom: calc(80 / 375 * 100vw);
+      @include common.pc {
+        width: 90%;
+        max-width: 990px;
+        padding-bottom: 100px;
+      }
+
+      &Title {
+        font-size: calc(16 / 375 * 100vw);
+        font-family: inherit;
+        font-weight: 500;
+        @include common.pc {
+          font-size: 20px;
+        }
+      }
+
+      &List {
+        width: calc(322.5 / 375 * 100vw);
+        margin: calc(50 / 375 * 100vw) auto 0;
+        row-gap: calc(20 / 375 * 100vw);
+        @include common.pc {
+          width: 90%;
+          max-width: 900px;
+          margin: 70px auto 0;
+          row-gap: 20px;
+        }
+
+        > div,
+        li {
+          font-size: calc(11 / 375 * 100vw);
+          @include common.pc {
+            font-size: 14px;
+          }
+
+          .textOverflow {
+            @include common.pc {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    &__snap {
+      padding: calc(85 / 375 * 100vw) 0 calc(70 / 375 * 100vw);
+      @include common.pc {
+        width: 100%;
+        padding: 80px 0 100px;
+      }
+
+      &Title {
+        font-size: calc(14 / 375 * 100vw);
+        font-family: inherit;
+        font-weight: 500;
+        @include common.pc {
+          font-size: 20px;
+        }
+      }
+
+      &List {
+        width: calc(322.5 / 375 * 100vw);
+        margin: 0 auto;
+        margin-top: 8vw;
+        row-gap: calc(20 / 375 * 100vw);
+        @include common.pc {
+          width: 90%;
+          max-width: 900px;
+          margin: 30px auto 0;
+          row-gap: 20px;
+        }
+
+        li {
+          width: calc(100% / 3);
+          font-size: calc(11 / 375 * 100vw);
+          @include common.pc {
+            width: calc(100% / 6);
+            font-size: 14px;
+          }
+
+          .tall {
+            @include common.pc {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    &__buttonBox {
+      @include common.pc {
+        margin-top: 80px;
+        grid-template-columns: 306px 306px;
+        grid-template-rows: 23px 1fr;
+        column-gap: 10px;
+        row-gap: 57px;
+        place-items: center;
+        place-content: center;
+      }
+    }
+
+    &__button {
+      // width: 80vw;
+      font-size: calc(14 / 375 * 100vw) !important;
+      @include common.pc {
+        // width: 101px;
+        font-size: 14px !important;
+      }
+
+      & + & {
+        @include common.pc {
+          margin-top: 40px;
+        }
+      }
+    }
+
+    &__itemMore {
+      color: #000;
+      // background-color: #575454;
+      // border: 1px solid #575454;
+      border-bottom: solid 1px #000;
+      text-align: right;
+      font-size: calc(12 / 375 * 100vw);
+      display: inline-block;
+      margin-left: auto;
+      margin-right: calc(20 / 375 * 100vw);
+      margin-bottom: calc(90 / 375 * 100vw);
+
+      @include common.pc {
+        font-size: 16px;
+        grid-column: 2 / 3;
+        grid-row: 1 /2;
+        margin-right: 0;
+        margin-bottom: 0;
+        transform: translateX(140px); /* 右へ140px はみ出す */
+      }
+
+      &:active {
+        // color: #575454;
+        color: #575454;
+        // background-color: transparent;
+        border-bottom: solid 1px #575454;
+      }
+
+      &:hover {
+        @include common.pc {
+          color: #575454;
+          // background-color: transparent;
+          border-bottom: solid 1px #575454;
+        }
+      }
+    }
+
+    &__recommendType {
+      @include common.pc {
+        grid-row: 2 /3;
+        grid-column: 1 / 2;
+        width: 306px;
+        justify-content: center;
+        margin-left: 0;
+      }
+
+      &:last-child {
+        grid-column: 2 / 3;
+      }
+    }
+  }
+}
+
+.result__point {
+  width: calc(310 / 375 * 100vw);
+  margin: 8vw auto 0;
+  @include common.pc {
+    width: auto;
+    margin-top: 30px;
+  }
+
+  &Title {
+    width: fit-content;
+    display: block;
+    margin-inline: auto;
+    padding-bottom: calc(4 / 375 * 100vw);
+    font-size: calc(16 / 375 * 100vw);
+    border-bottom: 1px solid #000;
+    @include common.pc {
+      padding-bottom: 4px;
+      font-size: 16px;
+    }
+  }
+
+  &List {
+    margin-top: 8vw;
+    @include common.pc {
+      width: 375px;
+      margin-top: 30px;
+      margin-inline: auto;
+      font-size: 14px;
+    }
+
+    li {
+      padding-left: 1em;
+      text-indent: -1em;
+
+      & + li {
+        margin-top: calc(8 / 375 * 100vw);
+        @include common.pc {
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,225 @@
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+@mixin clearfix {
+	*zoom: 1;
+	&::after {
+	content: '';
+	display: table;
+	clear: both;
+	}
+}
+@mixin imgZoom {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+	&::hover{
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+}
+@mixin font-face($family, $path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$path}.woff2') format('woff2'),
+         url('#{$path}.woff') format('woff'),
+         url('#{$path}.ttf') format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+@mixin link-color($color) {
+     color: $color;
+
+     &:hover, &:active, &:focus {
+         color: lighten($color, 20%);
+     }
+}
+@mixin link-bg-color($color) {
+     background: $color;
+     transition: 1s;
+
+     &:hover, &:active, &:focus {
+         background: lighten($color, 20%);
+     }
+}
+@mixin link-border-color($color) {
+     background: #fff;
+     transition: 1s;
+     border: 1px solid $color;
+     &:hover, &:active, &:focus {
+         background: $color;
+         color: #fff;
+     }
+}
+@mixin flex{
+	display: flex;
+	flex-wrap: wrap;
+}
+@mixin flex-center{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+@mixin marker($color){
+	background: -webkit-linear-gradient(rgba(255,255,255,0) 60%, $color 0%);
+	background: linear-gradient(rgba(255,255,255,0) 60%, $color 0%);
+
+}
+@mixin position-center{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+
+
+@mixin anime-blink{
+	.blink {
+	    animation: blink 2s ease 0s infinite normal;
+	    -webkit-animation: blink 2s ease 0s infinite normal ;
+	}
+	@keyframes blink {
+	    0% { opacity: 0 }
+
+	    100% { opacity: 1 }
+	}
+	@-webkit-keyframes blink {
+	    0% { opacity: 0 }
+
+	    100% { opacity: 1 }
+	}
+}
+@mixin anime-fuwat{
+	.fuwatAnime {
+	  -webkit-animation-fill-mode: both;
+	  -ms-animation-fill-mode: both;
+	  animation-fill-mode: both;
+	  -webkit-animation-duration: 1.5s;
+	  -ms-animation-duration: 1.5s;
+	  animation-duration: 1.5s;
+	  -webkit-animation-name: fuwatAnime;
+	  -ms-animation-name: fuwatAnime;
+	  animation-name: fuwatAnime;
+	  visibility: visible !important;
+  	}
+	@-webkit-keyframes fuwatAnime {
+	  0% { opacity: 0;-webkit-transform: translateY(20px);}
+	  100% { opacity: 1;-webkit-transform: translateY(0); }
+	}
+	@keyframes fuwatAnime {
+	  0% { opacity: 0;-webkit-transform: translateY(20px);-ms-transform: translateY(20px);transform: translateY(20px);}
+	  100% { opacity: 1;-webkit-transform: translateY(0);-ms-transform: translateY(0);transform: translateY(0);}
+	}
+}
+@mixin anime-svg($color){
+	.drawingText{
+	    stroke:$color;
+	    fill:$color;
+	    stroke-width:1;
+	    stroke-dasharray: 3000;
+	    stroke-dashoffset:3000;
+	    animation: DASH 2s ease-in alternate forwards;
+	    -webkit-animation:DASH 2s ease-in alternate forwards;
+	    -o-animation:DASH 2s ease-in alternate forwards;
+	    animation:DASH 2s ease-in alternate forwards;
+	}
+	@-webkit-keyframes DASH{
+		0%{stroke-dashoffset:3000;fill-opacity: 0;}
+		80%{stroke-dashoffset:0;fill-opacity: 0;}
+		100%{fill-opacity: 1;}
+	}
+	@keyframes DASH{
+		0%{stroke-dashoffset:3000;fill-opacity: 0;}
+		80%{stroke-dashoffset:0;fill-opacity: 0;}
+		100%{fill-opacity: 1;}
+	}
+}
+@mixin loading{
+	#loader-bg {
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+		top: 0px;
+		left: 0px;
+		background: #FFF;
+		z-index: 1;
+		z-index: 99999;
+
+		#loading{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include mq(pc){
+				width: 100%;
+				margin: auto;
+				height:100%
+			}
+			@include mq(sp){
+				width: 100%;
+				margin: auto;
+				height: 100%;
+			}
+			div{
+				@include mq(pc){
+					width: 20%;
+					margin: auto;
+				}
+				@include mq(sp){
+					width: 40%;
+					margin: auto;
+				}
+			}
+		}
+	}
+}
+@mixin monoqlo{
+	.monoqlo{
+		-webkit-filter: grayscale(100%);
+  		filter: grayscale(100%);
+	}
+}
+@mixin anime-drawTheLine{
+	@-webkit-keyframes  drawTheLine{
+	  from{
+	      background-size: 0% 100%;
+
+	    }
+	  100%{
+	      background-size: 100% 100%;
+
+	  }
+	}
+
+	@keyframes  drawTheLine{
+	  from{
+	      background-size: 0% 100%;
+	      -ms-background-size: 0% 100%;
+	    }
+	  100%{
+	      background-size: 100% 100%;
+	      -ms-background-size: 100% 100%;
+	  }
+	}
+
+}
+
+
+// モニタサイズ375pxを起点にしたvwのサイズ指定
+@function vw($size, $viewport: 375) {
+	$rate: 100 / $viewport;
+	@return $rate * $size * 1vw;
+}
+// 上記のvwを利用したフォントサイズの指定
+@mixin fz($font_size: 10) {
+font-size: $font_size * 1px; //vw非対応の場合の保険
+font-size: vw_sp($font_size); //フォントをvw指定
+}

@@ -1,0 +1,351 @@
+@charset "utf-8";
+@import "compass/compass";
+@import "mixin";
+
+/*リセット
+--------------------------------------------*/
+@include global-reset;
+
+
+/*メディアクエリー
+---------------------------------------------*/
+$breakpoints: (
+  "xs": "screen and (min-width: 400px)",
+  "sp": "screen and (max-width: 768px)",
+  "pc": "screen and (min-width: 769px)",
+  "xl": "screen and (min-width: 1200px)",
+) !default;
+
+/*変数
+---------------------------------------------*/
+$pcFontXs: 10px;
+$pcFontS: 12px;
+$pcFontM: 14px;
+$pcFontL: 22px;
+$pcSpace1: 19px;
+$pcSpace2: 38px;
+$pcSpace3: 57px;
+$blue: #000000;
+$beige: #fffbe6;
+$yellow: #f3d530;
+$brown: #7c634e;
+$red: #f078b4;
+
+$gray: #888888;
+
+$spFontS: 10px;
+$spFontM: 14px;
+$spFontL: 16px;
+
+/* コンテンツ
+---------------------------------------------*/
+html,
+body,
+#wrapper {
+  // letter-spacing: 0.1em;
+  width: 100%;
+  // font-feature-settings: "palt" 1;
+  color: #333333;
+  font-family: dnp-shuei-gothic-gin-std, sans-serif;
+	font-weight: 500;
+  font-style: normal;
+	font-feature-settings: "palt" 1;
+	line-height: 1.8;
+	overflow-x: hidden;
+  
+
+  @include mq(pc) {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  @include mq(sp) {
+    font-size: 11px;
+
+  }
+  a {
+    text-decoration: none;
+    color: #333333;
+  }
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.pcNone {
+  @include mq(pc) {
+    display: none;
+  }
+  @include mq(sp) {
+    display: block;
+  }
+}
+.spNone {
+  @include mq(pc) {
+    display: block;
+  }
+  @include mq(sp) {
+    display: none;
+  }
+}
+
+
+
+
+.head {
+  font-family: fot-tsukuaoldmin-pr6n, sans-serif;
+	font-weight: 300;
+	font-style: normal;
+  text-align: center;
+  line-height: 1;
+  @include mq (sp){
+    font-size: vw(24);
+    margin-top: vw(46);
+  }
+  @include mq (pc) {
+    font-size: calc(32vw / 14.4);
+    margin-top: calc(97vw / 14.4);
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    border-bottom: solid 1px #333333;
+    margin: 0 auto;
+    @include mq (sp) {
+      width: vw(52);
+      margin-top: vw(15);
+      margin-bottom: vw(16);
+    }
+    @include mq (pc) {
+      width: calc(69vw / 14.4);
+      margin-top: calc(19.5vw / 14.4);
+      margin-bottom: calc(19.5vw / 14.4);
+    }
+  }
+}
+
+.sub-ttl {
+  text-align: center;
+  font-weight: bold;
+  @include mq (sp) {
+    font-size: vw(16);
+    margin-bottom: vw(31);
+  }
+  @include mq (pc) {
+    font-size: calc(20vw / 14.4);
+    margin-bottom: calc(47vw / 14.4);
+  }
+}
+
+.page-wrap { 
+  div:nth-child(n+2){
+    display:none;
+  }
+}
+
+.page {
+
+  div {
+    ul {
+      display: grid;
+      justify-content: center;
+      @include mq (sp) {
+        grid-template-columns: vw(178) vw(178);
+        column-gap: vw(6);
+        row-gap: vw(20);
+      }
+      @include mq (pc) {
+        grid-template-columns: calc(320vw / 14.4) calc(320vw / 14.4) calc(320vw / 14.4);
+        column-gap: calc(13vw / 14.4);
+        row-gap: calc(35vw / 14.4);
+      }
+
+      li {
+        .img {
+          width: 100%;
+          // background-color: gray;
+          @include mq (sp) {
+            // height: vw(120);
+            margin-bottom: vw(12);
+          }
+          @include mq (pc) {
+            // height: calc(213vw / 14.4);
+            margin-bottom: calc(14vw / 14.4);
+          }
+        }
+
+        p {
+          @include mq (sp) {
+            font-size: vw(11);
+            line-height: calc(20 / 11);
+          }
+          @include mq (pc) {
+            font-size: calc(12vw / 14.4);
+            line-height: calc(20 / 12);
+          }
+          &.date {
+            color: #8D8C8C;
+            font-weight: bold;
+            line-height: 1;
+            @include mq (sp) {
+              margin-bottom: vw(6);
+            }
+            @include mq (pc) {
+              margin-bottom: calc(6vw / 12);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.pager_wrapper {
+  display: flex;
+  justify-content: center;
+  @include mq (sp) {
+    column-gap: vw(20);
+    margin-top: vw(70);
+    margin-bottom: vw(55);
+  }
+  @include mq (pc) {
+    column-gap: calc(40vw / 14.4);
+    margin-top: calc(56vw / 14.4);
+    margin-bottom: calc(34vw / 14.4);
+  }
+
+  .prev-btn,.next-btn {
+    position: relative;
+    transition-duration: 0.3s;
+    @include mq (sp) {
+      width: vw(30);
+    }
+    @include mq (pc) {
+      width: calc(30vw / 14.4);
+    }
+
+    // &:hover {
+    //   opacity: 0.5;
+    // }
+
+    a {
+      display: block;
+      @include mq (sp) {
+        width: vw(30);
+        height: vw(30);
+      }
+      @include mq (pc) {
+        width: calc(30vw / 14.4);
+        height: calc(30vw / 14.4);
+      }
+      
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include mq (sp) {
+          width: vw(4.21);
+        }
+        @include mq (pc) {
+          width: calc(5.65vw / 14.4);
+        }
+      }
+    }
+  }
+
+  .pager {
+    display: flex;
+    @include mq (sp) {
+      column-gap: vw(20);
+    }
+    @include mq (pc) {
+      column-gap: calc(22vw / 14.4);
+    }
+
+    li {
+
+      a {
+        display: block;
+        font-weight: bold;
+        position: relative;
+        @include mq (sp) {
+          width: vw(30);
+          height: vw(30);
+        }
+        @include mq (pc) {
+          width: calc(30vw / 14.4);
+          height: calc(30vw / 14.4);
+        }
+        
+        p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: #C1C1C1;
+          @include mq (sp) {
+            font-size: vw(10);
+          }
+          @include mq (pc) {
+            font-size: calc(14vw  /14.4);
+          }
+        }
+      }
+
+      &.active a p {
+        color: #333333;
+      }
+    }
+  }
+}
+
+.back-btn {
+  transition-duration: .3s;
+  opacity: 1;
+  @include mq (sp) {
+    margin-bottom: vw(74);
+  }
+  @include mq (pc) {
+    margin-bottom: calc(138vw / 14.4);
+  }
+
+  // &:hover {
+  //   opacity: 0.5;
+  // }
+
+  a {
+    display: block;
+    margin: 0 auto;
+    border: solid 1px #333333;
+    position: relative;
+    @include mq (sp) {
+      width: vw(309);
+      height: vw(64);
+    }
+    @include mq (pc) {
+      width: calc(482vw / 14.4);
+      height: calc(70vw / 14.4);
+    }
+
+    p.txt {
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include mq (sp) {
+        font-size: vw(14);
+      }
+      @include mq (pc) {
+        font-size: calc(16vw / 14.4);
+      }
+    }
+  }
+}

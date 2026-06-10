@@ -1,0 +1,329 @@
+@use "common";
+
+.shindan {
+  padding: calc(80 / 375 * 100vw) 0;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  @include common.pc {
+    padding: 95px 0;
+  }
+
+  // way
+  &__way {
+    width: calc(350 / 375 * 100vw);
+    margin-inline: auto;
+    @include common.pc {
+      width: 730px;
+    }
+
+    &Title {
+      font-size: calc(16 / 375 * 100vw);
+      text-align: center;
+      @include common.pc {
+        font-size: 24px;
+      }
+    }
+
+    &Direction {
+      margin-top: calc(40 / 375 * 100vw);
+      @include common.pc {
+        margin-top: 54px;
+      }
+
+      li {
+        > * {
+          display: block;
+          cursor: pointer;
+        }
+
+        &+li {
+          margin-top: 4vw;
+          @include common.pc {
+            margin-top: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  // app && android
+  &__toNiaino {
+    position: relative;
+
+    &.android {
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        background-color: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      &::after {
+        content: "WEB版パルクロでお試しください";
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+  }
+
+  // already
+  &__already {
+    width: calc(308 / 375 * 100vw);
+    margin: 16vw auto 0;
+    padding: 8vw 0;
+    border: 1px dotted #000;
+    @include common.pc {
+      width: 473px;
+      margin-top: 123px;
+      padding: 45px 0;
+    }
+
+    &Title {
+      font-size: 3.2vw;
+      text-align: center;
+      @include common.pc {
+        font-size: 16px;
+      }
+    }
+
+    &List {
+      width: calc(226.5 / 375 * 100vw);
+      margin: calc(20 / 375 * 100vw) auto 0;
+      display: flex;
+      justify-content: space-between;
+      @include common.pc {
+        width: 352px;
+        margin-top: 24px;
+      }
+
+      li {
+        width: 31.1%;
+        aspect-ratio: 1/1;
+
+        a {
+          height: 100%;
+          display: block;
+          font-size: 2.4vw;
+          letter-spacing: 0;
+          position: relative;
+          @include common.pc {
+            font-size: 13px;
+          }
+
+          > p {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: calc(25 / 70 * 100%);
+            left: 50%;
+            transform: translateX(-50%);
+          }
+
+          &::after {
+            content: ">";
+            display: block;
+            font-size: calc(12 / 375 * 100vw);
+            position: absolute;
+            top: 68%;
+            left: 44%;
+            transform: rotate(90deg) translateX(-50%);
+            transform-origin: center;
+            @include common.pc {
+              font-size: 13px;
+            }
+          }
+        }
+
+        &:nth-child(1) {
+          a {
+            color: common.$st;
+            border: 1px solid common.$st;
+
+            &:active {color: #fff; background-color: common.$st;}
+            &:hover {@include common.pc {color: #fff; background-color: common.$st;}}
+          }
+        }
+        &:nth-child(2) {
+          a {
+            color: common.$wv;
+            border: 1px solid common.$wv;
+
+            &:active {color: #fff; background-color: common.$wv;}
+            &:hover {@include common.pc {color: #fff; background-color: common.$wv;}}
+          }
+        }
+        &:nth-child(3) {
+          a {
+            color: common.$nt;
+            border: 1px solid common.$nt;
+
+            &:active {color: #fff; background-color: common.$nt;}
+            &:hover {@include common.pc {color: #fff; background-color: common.$nt;}}
+          }
+        }
+      }
+    }
+  }
+
+  // question
+  &__quest {
+    padding-top: 16vw;
+    display: none;
+    @include common.pc {
+      padding-top: 150px;
+    }
+
+    &Title {
+      font-size: calc(16 / 375 * 100vw);
+      text-align: center;
+      @include common.pc {
+        font-size: 24px;
+      }
+    }
+
+    &Wrap {
+      width: 91.2vw;
+      margin: calc(40 / 375 * 100vw) auto 0;
+      @include common.pc {
+        width: 642px;
+        margin-top: 54px;
+      }
+    }
+
+    &Card {
+      padding: calc(25 / 375 * 100vw) 0;
+      background-color: #F0F0E4;
+      border-radius: 7px;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+      @include common.pc {
+        padding: 60px 0;
+      }
+
+      &+& {
+        margin-top: calc(50 / 375 * 100vw);
+        @include common.pc {
+          margin-top: 50px;
+        }
+      }
+
+      &:not(:first-child) {
+        display: none;
+      }
+    }
+
+    &Q {
+      font-size: 4vw;
+      text-align: center;
+      @include common.pc {
+        font-size: 18px;
+      }
+    }
+
+    &A {
+      width: calc(265 / 375 * 100vw);
+      margin: calc(22 / 375 * 100vw) auto 0;
+      display: flex;
+      justify-content: space-between;
+      @include common.pc {
+        width: 367px;
+        margin-top: 40px;
+      }
+
+      .yes,
+      .no {
+        width: calc(124.5 / 375 * 100vw);
+        padding: calc(10 / 375 * 100vw);
+        transition: all .6s;
+        cursor: pointer;
+        @include common.pc {
+          width: 176px;
+          padding: 18px;
+        }
+      }
+
+      .yes {
+        color: common.$gr;
+        border: 1px solid transparent;
+
+        &:active {
+          color: common.$yes;
+          border: 1px solid common.$yes;
+        }
+
+        &:hover {
+          @include common.pc {
+            color: common.$yes;
+            border: 1px solid common.$yes;
+          }
+        }
+      }
+
+      .no {
+        color: common.$gr;
+        border: 1px solid transparent;
+
+        &:active {
+          color: common.$no;
+          border: 1px solid common.$no;
+        }
+
+        &:hover {
+          @include common.pc {
+            color: common.$no;
+            border: 1px solid common.$no;
+          }
+        }
+      }
+
+      img {
+        width: 90%;
+        margin-inline: auto;
+      }
+
+      p {
+        margin-top: calc(10 / 375 * 100vw);
+        font-size: calc(11 / 375 * 100vw);
+        text-align: center;
+        @include common.pc {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  // result
+  &__result {
+    width: 91.2vw;
+    margin-inline: auto;
+    padding-top: calc(118 / 375 * 100vw);
+    display: none;
+    @include common.pc {
+      width: 546px;
+      padding-top: 124px;
+    }
+
+    a {
+      width: 100%;
+
+      &:active {
+        opacity: .6;
+      }
+
+      &:hover {
+        @include common.pc {
+          opacity: .6;
+        }
+      }
+    }
+  }
+}

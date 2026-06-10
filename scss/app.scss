@@ -1,0 +1,23 @@
+//foundation
+@use "style/reset";
+@use "style/common";
+
+// style
+@use "style/layout";
+
+// top
+@use "style/firstView";
+@use "style/lead";
+@use "style/shindan";
+@use "style/result";
+@use "style/leeep";
+@use "style/prof";
+@use "style/other";
+
+// type
+@use "style/section";
+
+@use "style/top";
+@use "style/check";
+
+@use "style/animation";

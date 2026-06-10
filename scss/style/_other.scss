@@ -1,0 +1,83 @@
+@use "common";
+
+.other {
+  padding: 19.2vw 0;
+  background-color: #f7f5f5;
+  @include common.pc {
+    padding: 100px 0;
+  }
+
+  &__title {
+    color: #333;
+    font-size: calc(20 / 375 * 100vw);
+    @include common.tsuku;
+    text-align: center;
+    @include common.pc {
+      font-size: 24px;
+    }
+
+    span {
+      display: block;
+      font-size: 4vw;
+      @include common.pc {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__list {
+    width: calc(218 / 375 * 100vw);
+    margin: calc(35 / 375 * 100vw) auto 0;
+    @include common.pc {
+      width: min(80%, 900px);
+      margin-top: 50px;
+      display: flex;
+      // justify-content: space-between;
+      justify-content: center;
+      column-gap: 2%;
+    }
+
+    li {
+      @include common.pc {
+        width: 31%;
+      }
+
+      & + li {
+        margin-top: 8.8vw;
+        @include common.pc {
+          margin-top: 0;
+        }
+      }
+
+      a {
+        &:active {
+          opacity: 0.6;
+        }
+
+        &:hover {
+          @include common.pc {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}
+
+.other.is-desc {
+  padding: 0 2.4vw 2.4vw;
+  background-color: #fff;
+  @include common.pc {
+    padding: 0 9px 9px;
+  }
+
+  .other__inner {
+    padding: 19.2vw 0;
+    border: 1px solid #879db5;
+    border-top: none;
+
+    @include common.pc {
+      padding: 100px 0;
+    }
+  }
+}

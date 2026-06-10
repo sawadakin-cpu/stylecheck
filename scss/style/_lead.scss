@@ -1,0 +1,30 @@
+@use "common";
+
+.lead {
+  padding: calc(70 / 375 * 100vw) 0 calc(65 / 375 * 100vw);
+  background-color: #F7F7FA;
+  @include common.pc {
+    padding: 100px 0 135px;
+  }
+
+  &__title {
+    font-size: calc(20 / 375 * 100vw);
+    text-align: center;
+    @include common.tsuku;
+    @include common.pc {
+      font-size: 24px;
+    }
+  }
+
+  &__text {
+    width: calc(332 / 375 * 100vw);
+    margin: 16vw auto 0;
+    font-size: calc(13 / 375 * 100vw);
+    line-height: 2;
+    @include common.pc {
+      margin-top: 70px;
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+}

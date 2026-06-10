@@ -1,0 +1,147 @@
+@use "common";
+
+.prof {
+  padding: calc(100 / 375 * 100vw) 0;
+  font-size: calc(11 / 375 * 100vw);
+  @include common.pc {
+    padding: 100px 0;
+    font-size: 13px;
+  }
+
+  &__card {
+    width: 82.4vw;
+    margin-inline: auto;
+    padding: calc(40 / 375 * 100vw) calc(22 / 375 * 100vw);
+    border: 1px solid #000000;
+    @include common.pc {
+      width:607px;
+      padding:60px;
+    }
+
+    &+& {
+      margin-top: calc(40 / 375 * 100vw);
+      @include common.pc {
+        margin-top: 65px;;
+      }
+    }
+  }
+
+  &__data {
+    width: calc(248 / 375 * 100vw);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include common.pc {
+      width: 414px;
+    }
+  }
+
+  &__image {
+    width: calc(82.5 / 375 * 100vw);
+    @include common.pc {
+      width: 132px;
+    }
+  }
+
+  &__info {
+    width: 40.8vw;
+    line-height: 1;
+    @include common.pc {
+      width: 214px;
+    }
+  }
+
+  &__small {
+    font-size: calc(10 / 375 * 100vw);
+    @include common.pc {
+      font-size: 12px;
+    }
+  }
+
+  &__name {
+    margin-top: calc(10 / 375 * 100vw);
+    font-size: calc(14 / 375 * 100vw);
+    @include common.pc {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    &--ill {
+      margin-top: calc(5 / 375 * 100vw);
+      @include common.pc {
+        margin-top: 5px;
+      }
+    }
+
+    > span {
+      font-size: calc(10 / 375 * 100vw);
+      @include common.pc {
+        font-size: 13px;
+      }
+    }
+  }
+
+  &__en {
+    margin-top: calc(4 / 375 * 100vw);
+    @include common.pc {
+      margin-top: 10px;
+    }
+  }
+
+  &__link {
+    width: calc(230.5 / 375 * 100vw);
+    margin: calc(25 / 375 * 100vw) auto 0;
+    font-size: 3.2vw;
+    @include common.pc {
+      width: 100%;
+      margin-top: 15px;
+      font-size: 11px;
+    }
+
+    li {
+      height: calc(28 / 375 * 100vw);
+      @include common.pc {
+          height: 25px;
+      }
+
+      &+li {
+        margin-top: calc(7 / 375 * 100vw);
+        @include common.pc {
+          margin-top: 10px;
+        }
+      }
+
+      a {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        border: 1px solid #000;
+        border-radius: 9999px;
+
+        &:active {
+          color: #fff;
+          background-color: #000;
+        }
+
+        &:hover {
+          @include common.pc {
+            color: #fff;
+            background-color: #000;
+          }
+        }
+      }
+    }
+  }
+
+  &__desc {
+    margin: calc(25 / 375 * 100vw) auto 0;
+    line-height: 2;
+    letter-spacing: 0.1em;
+    @include common.pc {
+      margin-top: 30px;
+    }
+  }
+}
