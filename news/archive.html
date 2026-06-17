@@ -1,272 +1,290 @@
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"> -->
-<link rel="stylesheet" href="https://www.palcloset.jp/shared/pc_pal/event/news/style.css">
-<link rel="stylesheet" href="https://www.palcloset.jp/shared/pc_pal/event/news/css/flexslider.css">
+<link
+  rel="stylesheet"
+  href="https://www.palcloset.jp/shared/pc_pal/event/news/style.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://www.palcloset.jp/shared/pc_pal/event/news/css/flexslider.css"
+/>
 <script src="https://www.palcloset.jp/shared/pc_pal/event/news/js/jquery.flexslider.js"></script>
 
 <!-- ローカル確認用 sssには記載しない-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/flexslider.min.css"
+/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.2/jquery.flexslider.js"></script>
 <script src="./js/script.js"></script>
 
 <!-- flexslider -->
 <script>
-    jQuery(function () {
-        function getItemWidth() {
-            const containerWidth = jQuery('.flexslider').width();
-            return Math.floor((containerWidth - 20) / 2); // 2枚表示、margin考慮
-        }
+  jQuery(function () {
+    function getItemWidth() {
+      const containerWidth = jQuery(".flexslider").width();
+      return Math.floor((containerWidth - 20) / 2); // 2枚表示、margin考慮
+    }
 
-        function positionNavButtons() {
-            const $slider = jQuery('.flexslider');
-            const $image = $slider.find('.slides li img').first();
-            const $prev = $slider.find('.flex-prev');
-            const $next = $slider.find('.flex-next');
+    function positionNavButtons() {
+      const $slider = jQuery(".flexslider");
+      const $image = $slider.find(".slides li img").first();
+      const $prev = $slider.find(".flex-prev");
+      const $next = $slider.find(".flex-next");
 
-            if ($image.length && $prev.length && $image[0].complete) {
-                const imgHeight = $image.height();
-                const btnHeight = $prev.height();
-                const topPos = (imgHeight - btnHeight) / 2;
+      if ($image.length && $prev.length && $image[0].complete) {
+        const imgHeight = $image.height();
+        const btnHeight = $prev.height();
+        const topPos = (imgHeight - btnHeight) / 2;
 
-                $prev.css('top', topPos + 'px');
-                $next.css('top', topPos + 'px');
-            }
-        }
+        $prev.css("top", topPos + "px");
+        $next.css("top", topPos + "px");
+      }
+    }
 
-        jQuery('.flexslider').flexslider({
-            animation: "slide",
-            slideshowSpeed: 3000,
-            controlNav: true,
-            directionNav: true,
-            animationLoop: false,
-            slideshow: false,
-            itemWidth: getItemWidth(),
-            itemMargin: 20,
-            minItems: 2,
-            maxItems: 2,
-            start: function () {
-                positionNavButtons();
-            }
-        });
-
-        jQuery(window).on('resize', function () {
-            const flex = jQuery('.flexslider').data('flexslider');
-            if (flex) {
-                flex.vars.itemWidth = getItemWidth();
-                flex.doMath();
-                flex.update();
-            }
-            positionNavButtons();
-        });
-
-        // 画像が非同期に読み込まれた場合も再調整
-        jQuery(window).on('load', positionNavButtons);
+    jQuery(".flexslider").flexslider({
+      animation: "slide",
+      slideshowSpeed: 3000,
+      controlNav: true,
+      directionNav: true,
+      animationLoop: false,
+      slideshow: false,
+      itemWidth: getItemWidth(),
+      itemMargin: 20,
+      minItems: 2,
+      maxItems: 2,
+      start: function () {
+        positionNavButtons();
+      },
     });
+
+    jQuery(window).on("resize", function () {
+      const flex = jQuery(".flexslider").data("flexslider");
+      if (flex) {
+        flex.vars.itemWidth = getItemWidth();
+        flex.doMath();
+        flex.update();
+      }
+      positionNavButtons();
+    });
+
+    // 画像が非同期に読み込まれた場合も再調整
+    jQuery(window).on("load", positionNavButtons);
+  });
 </script>
 
-
-
-
 <div id="stylecheck_news">
-
-    <!-- archive -->
-    <div id="archive" class="archive">
-        <p class="a_title">ARCHIVE</p>
-        <div class="flexslider slider">
-            <ul class="slides">
-                <li><img src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg" alt="">
-                    <p class="date">2025.5.5</p>
-                    <p class="title">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
-                </li>
-                <li><img src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg" alt="">
-                    <p class="date">2025.5.5</p>
-                    <p class="title">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
-                </li>
-                <li><img src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg" alt="">
-                    <p class="date">2025.5.5</p>
-                    <p class="title">タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
-                </li>
-            </ul>
-        </div>
+  <!-- archive -->
+  <div id="archive" class="archive">
+    <p class="a_title">ARCHIVE</p>
+    <div class="flexslider slider">
+      <ul class="slides">
+        <li>
+          <img
+            src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg"
+            alt=""
+          />
+          <p class="date">2025.5.5</p>
+          <p class="title">
+            タイトルが入ります。タイトルが入ります。タイトルが入ります。
+          </p>
+        </li>
+        <li>
+          <img
+            src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg"
+            alt=""
+          />
+          <p class="date">2025.5.5</p>
+          <p class="title">
+            タイトルが入ります。タイトルが入ります。タイトルが入ります。
+          </p>
+        </li>
+        <li>
+          <img
+            src="https://www.palcloset.jp/shared/pc_pal/event/palcloset/stylecheck/news/images/archive.jpg"
+            alt=""
+          />
+          <p class="date">2025.5.5</p>
+          <p class="title">
+            タイトルが入ります。タイトルが入ります。タイトルが入ります。
+          </p>
+        </li>
+      </ul>
     </div>
-
-    
+  </div>
 </div>
 
 <!-- ※※※以下は触らない※※※ -->
 <style>
-
-/******************************  
+  /******************************  
 archive
 ********************************/
+  #stylecheck_news .archive .a_title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #000;
+    /* padding-bottom: 10px; */
+  }
+
+  @media screen and (min-width: 970px) {
     #stylecheck_news .archive .a_title {
-        font-size: 18px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        border-bottom: 1px solid #000;
-        /* padding-bottom: 10px; */
+      font-size: 20px;
+      padding-bottom: 10px;
     }
+  }
 
-    @media screen and (min-width: 970px) {
-        #stylecheck_news .archive .a_title {
-            font-size: 20px;
-            padding-bottom: 10px;
-        }
-    }
+  #stylecheck_news .archive .slides .date,
+  #stylecheck_news .archive .slides .title {
+    font-size: 12px;
+    width: 100%;
+  }
 
-    #stylecheck_news .archive .slides .date,
-    #stylecheck_news .archive .slides .title {
-        font-size: 12px;
-        width: 100%;
-    }
+  #stylecheck_news .archive .flexslider .slides li {
+    box-sizing: border-box;
+  }
 
-    #stylecheck_news .archive .flexslider .slides li {
-        box-sizing: border-box;
-    }
+  #stylecheck_news .archive ul li {
+    list-style: none;
+  }
 
-    #stylecheck_news .archive ul li {
-        list-style: none;
-    }
+  #stylecheck_news .archive ul li img {
+    margin-top: 20px;
+    margin-bottom: 14px;
+  }
 
-    #stylecheck_news .archive ul li  img {
-        margin-top: 20px;
-        margin-bottom: 14px;
+  #stylecheck_news .archive ul::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  /* スクロールの背景の設定 */
+  #stylecheck_news .archive ul::-webkit-scrollbar-track {
+    border-radius: 5px;
+    box-shadow: 0 0 4px #aaa inset;
+    padding-left: 10px;
+  }
+  /* スクロールのつまみ部分の設定 */
+  #stylecheck_news .archive ul::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #717171;
+  }
+  @media screen and (min-width: 970px) {
+    #stylecheck_news {
+      width: 100%;
     }
-
-    #stylecheck_news .archive ul::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
+    #stylecheck_new .top {
+      margin-bottom: 50px;
     }
-    /* スクロールの背景の設定 */
-    #stylecheck_news .archive ul::-webkit-scrollbar-track {
-        border-radius: 5px;
-        box-shadow: 0 0 4px #aaa inset;
-        padding-left: 10px;
-    }
-    /* スクロールのつまみ部分の設定 */
-    #stylecheck_news .archive ul::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        background: #717171;
-    }
-    @media screen and (min-width: 970px) {
-        #stylecheck_news {
-            width: 100%;
-        }
-        #stylecheck_new .top {
-            margin-bottom: 50px;
-        }
-    }
-/******************************  
+  }
+  /******************************  
 flexsliderの ＜＞directionNav  と。。。controlNav
 ********************************/
-#stylecheck_news .flex-control-nav {
-    bottom: -40px!important;
-}
+  #stylecheck_news .flex-control-nav {
+    bottom: -40px !important;
+  }
 
-#stylecheck_news .flex-control-nav li {
+  #stylecheck_news .flex-control-nav li {
     width: 6px;
     margin: 0 14px;
-}
-@media screen and (min-width: 769px) {
+  }
+  @media screen and (min-width: 769px) {
     #stylecheck_news .flex-control-nav li {
-    margin: 0 13px;
+      margin: 0 13px;
     }
-}
+  }
 
-#stylecheck_news .flex-control-paging li a {
+  #stylecheck_news .flex-control-paging li a {
     width: 6px;
     height: 6px;
     border: 0.5px solid rgb(20, 36, 71);
     background: rgb(20, 36, 71);
     background: none;
     -webkit-box-shadow: none;
-            box-shadow: none;
-}
-@media screen and (min-width: 769px) {
+    box-shadow: none;
+  }
+  @media screen and (min-width: 769px) {
     #stylecheck_news .flex-control-paging li a {
-        width: 8px !important;
-        height: 8px !important;
+      width: 8px !important;
+      height: 8px !important;
     }
-}
+  }
 
-#stylecheck_news .flex-control-paging li a.flex-active {
+  #stylecheck_news .flex-control-paging li a.flex-active {
     background: rgba(20, 36, 71, 0.9);
-}
+  }
 
-#stylecheck_news .flex-direction-nav a {
+  #stylecheck_news .flex-direction-nav a {
     display: none;
-}
-@media screen and (min-width: 769px) {
+  }
+  @media screen and (min-width: 769px) {
     #stylecheck_news .flex-direction-nav a {
-        display: block;
-        width: 20px;
-        height: 30px;
-        opacity: 1;
-        top: 60%;
+      display: block;
+      width: 20px;
+      height: 30px;
+      opacity: 1;
+      top: 60%;
     }
-}
+  }
 
-#stylecheck_news .flex-direction-nav a:before {
+  #stylecheck_news .flex-direction-nav a:before {
     display: none;
-    }
-@media screen and (min-width: 769px) {
+  }
+  @media screen and (min-width: 769px) {
     #stylecheck_news .flex-direction-nav a.flex-prev:before {
-        display: block;
-        content: "";
-        background-image: url(https://www.palcloset.jp/shared/pc_pal/event/news/images/prev.png) !important;
-        width: 12px;
-        height: 30px;
-        background-size: contain;
-        background-repeat: no-repeat;
+      display: block;
+      content: "";
+      background-image: url(https://www.palcloset.jp/shared/pc_pal/event/news/images/prev.png) !important;
+      width: 12px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
     #stylecheck_news .flex-direction-nav a.flex-next:before {
-        display: block;
-        content: "";
-        background-image: url(https://www.palcloset.jp/shared/pc_pal/event/news/images/next.png) !important;
-        width: 12px;
-        height: 30px;
-        background-size: contain;
-        background-repeat: no-repeat;
+      display: block;
+      content: "";
+      background-image: url(https://www.palcloset.jp/shared/pc_pal/event/news/images/next.png) !important;
+      width: 12px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
-}
+  }
 
-    @media screen and (min-width: 769px) {
-        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-prev {
-        opacity: 1;
-        left: -40px;
+  @media screen and (min-width: 769px) {
+    #stylecheck_news .flexslider:hover .flex-direction-nav .flex-prev {
+      opacity: 1;
+      left: -40px;
     }
-        #stylecheck_news .flex-direction-nav .flex-prev {
-        left: -40px;
-        top: 50%!important;
+    #stylecheck_news .flex-direction-nav .flex-prev {
+      left: -40px;
+      top: 50% !important;
     }
-        #stylecheck_news .flex-direction-nav .flex-next {
-        right: -50px;
-        text-align: right;
-        top: 50%!important;
+    #stylecheck_news .flex-direction-nav .flex-next {
+      right: -50px;
+      text-align: right;
+      top: 50% !important;
     }
-        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-prev {
-        opacity: 1;
-        left: -40px;
+    #stylecheck_news .flexslider:hover .flex-direction-nav .flex-prev {
+      opacity: 1;
+      left: -40px;
     }
-        #stylecheck_news.flexslider:hover .flex-direction-nav .flex-prev:hover {
-        opacity: 0.7;
+    #stylecheck_news.flexslider:hover .flex-direction-nav .flex-prev:hover {
+      opacity: 0.7;
     }
-        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-next {
-        opacity: 1;
-        right: -50px;
+    #stylecheck_news .flexslider:hover .flex-direction-nav .flex-next {
+      opacity: 1;
+      right: -50px;
     }
-        #stylecheck_news .flexslider:hover .flex-direction-nav .flex-next:hover {
-        opacity: 0.7;
+    #stylecheck_news .flexslider:hover .flex-direction-nav .flex-next:hover {
+      opacity: 0.7;
     }
-        #stylecheck_news .flex-direction-nav a {
-        position: absolute;
-        width: 20px;
-        height: 30px;
-        opacity: 1;
-        /* top は JS で上書きされるのでここでは指定不要 */
+    #stylecheck_news .flex-direction-nav a {
+      position: absolute;
+      width: 20px;
+      height: 30px;
+      opacity: 1;
+      /* top は JS で上書きされるのでここでは指定不要 */
     }
-}
+  }
 </style>
-
-

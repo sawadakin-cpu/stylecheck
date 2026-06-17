@@ -47,6 +47,11 @@ const app = Vue.createApp({
     };
   },
   async mounted() {
+    const resultElement = document.getElementById("app");
+    if (resultElement) {
+      this.targetType = resultElement.dataset.target;
+    }
+
     // URLパラメータ（プレビュー用：?page=20260608）
     const params = new URLSearchParams(window.location.search);
     const pageParam = params.get("page");
@@ -98,11 +103,6 @@ const app = Vue.createApp({
       }
     } catch (e) {
       console.log("microCMS fetch 失敗", e);
-    }
-
-    const resultElement = document.getElementById("app");
-    if (resultElement) {
-      this.targetType = resultElement.dataset.target;
     }
   },
   computed: {
