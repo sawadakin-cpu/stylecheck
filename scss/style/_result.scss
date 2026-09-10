@@ -167,6 +167,13 @@
 
       &--or {
         color: common.$orange;
+
+        &::before {
+          content: "『";
+        }
+        &::after {
+          content: "』";
+        }
       }
     }
 
@@ -244,7 +251,9 @@
   }
 
   &__snap {
-    padding: calc(60 / 375 * 100vw) 0 calc(100 / 375 * 100vw);
+    // padding: calc(60 / 375 * 100vw) 0 calc(100 / 375 * 100vw);
+    // padding-top: calc(60 / 375 * 100vw);
+    padding: 16vw 0 0;
     background-color: rgba($color: #fff, $alpha: 0.5);
     @include common.pc {
       width: 100%;
