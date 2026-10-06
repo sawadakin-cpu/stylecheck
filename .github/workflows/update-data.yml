@@ -17,9 +17,9 @@ jobs:
 
       - name: Fetch microCMS data
         run: |
-          curl -s \
+          curl -sf \
             -H "X-MICROCMS-API-KEY: ${{ secrets.MICROCMS_API_KEY }}" \
-            "https://stylecheck.microcms.io/api/v1/stylecheck?limit=20&orders=-start" \
+            "https://kga41vfoj4.microcms.io/api/v1/stylecheck?limit=20&orders=-start" \
             -o data.json
 
       - name: Commit and push
